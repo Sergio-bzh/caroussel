@@ -16,7 +16,7 @@ body{
     align-item agit sur l'axe seondaire en fonction de la direction */
     height: 100vh;
 }
-/* Taille "fictive" pour chaque images */
+/* Définition d'un taille "fictive" pour chaque image car j'utilise ici des blocs */
 img{
     min-width: 98%; /* Si j'avais des images il faudrait mettre 100% */
     min-height: 420px;
@@ -25,7 +25,7 @@ img{
 }
 /* Définition de la taille pour le caroussel et mise en place d'un "cadre" (border) */
 .caroussel{
-    border: 5px solid fuchsia;
+   /* border: 5px solid fuchsia;  /* Penser à supprimer cette ligne à la fin pour ne pas afficher le cadre du caroussel */
     width: 640px; /* En ne mettant pas de hauteur cette dernière est en auto */
     /* L'overflow auto sert définir si le contenu peut ou non sortir du contenant */
     overflow: hidden; /* l'option hidden sert à cacher la barre de scroll horizontale */
@@ -36,14 +36,17 @@ img{
     display: flex;
     /* Minimum nécessaire pour définir une annimation */
     animation-duration: 12s;
-    animation-name: slider;
+    animation-name: slider; /* On peut donner le nom que l'on veux (même toto), j'ai choisi de la nommer slider */
     animation-iteration-count: infinite;
 }
-/* Règles d'éxécution de l'animation (sans @keyframe l'animation existe mais ne s'éxécute pas)*/
+/* 
+    Règles d'éxécution de l'animation (sans @keyframe l'animation existe mais ne s'éxécute pas)
+    sur keyframes il faut cibler l'animation par son nom (même toto)
+*/
 @keyframes slider{
     /* Etat initial de l'annimation de mon carroussel à l'instant 0 du temps d'animation (celle-ci dure 10s) */
     0%{
-        transform: translateX(0); /* Je donne la valeur de départ sur l'axe des horizontale */
+        transform: translateX(0); /* Je donne la valeur de départ sur l'axe horizontale */
     }
     /* 
     Je divise le temps de l'annimation par le nombre d'images de mon caroussel (dans ce cas précis 10s/4) 
