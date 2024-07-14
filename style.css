@@ -1,0 +1,66 @@
+/* Resest global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-size: 16px;
+    background-color: antiquewhite;
+}
+/* Utilisation de flex dans le parent du caroussel (body) pour centrer le caroussel */
+body{
+    display: flex; /* Par défaut flex-wrap est par défaut en No-Wrap */
+    justify-content: center;
+    align-items: center;
+    /* Je définis une hauteur pour que align-items puisse avoir effet; 
+    align-item agit sur l'axe seondaire en fonction de la direction */
+    height: 100vh;
+}
+/* Taille "fictive" pour chaque images */
+img{
+    min-width: 98%; /* Si j'avais des images il faudrait mettre 100% */
+    min-height: 420px;
+    border: 5px solid goldenrod;
+    margin: 1%;
+}
+/* Définition de la taille pour le caroussel et mise en place d'un "cadre" (border) */
+.caroussel{
+    border: 5px solid fuchsia;
+    width: 640px; /* En ne mettant pas de hauteur cette dernière est en auto */
+    /* L'overflow auto sert définir si le contenu peut ou non sortir du contenant */
+    overflow: hidden; /* l'option hidden sert à cacher la barre de scroll horizontale */
+    
+}
+/* Selecteur du conteneur des Images */
+.images{
+    display: flex;
+    /* Minimum nécessaire pour définir une annimation */
+    animation-duration: 12s;
+    animation-name: slider;
+    animation-iteration-count: infinite;
+}
+/* Règles d'éxécution de l'animation (sans @keyframe l'animation existe mais ne s'éxécute pas)*/
+@keyframes slider{
+    /* Etat initial de l'annimation de mon carroussel à l'instant 0 du temps d'animation (celle-ci dure 10s) */
+    0%{
+        transform: translateX(0); /* Je donne la valeur de départ sur l'axe des horizontale */
+    }
+    /* 
+    Je divise le temps de l'annimation par le nombre d'images de mon caroussel (dans ce cas précis 10s/4) 
+    et je positionne les jalons en pourcentage du temps
+    */
+    25%{
+        transform: translateX(-640px); /* Je soustrait la largeur d'une image pour déplacer la "frise" vers la gauche */
+    }
+    50%{
+        transform: translateX(-1280px); /* Je soustrait la largeur de 2 images pour déplacer la "frise" vers la gauche */
+        
+    }
+    75%{
+        transform: translateX(-1920px); /* Je soustrait la largeur de 2 images pour déplacer la "frise" vers la gauche */
+        
+    }
+    100%{
+        transform: translateX(0); /* A 100% du temps je reviens au point de départ de l'annimation */
+    }
+}
